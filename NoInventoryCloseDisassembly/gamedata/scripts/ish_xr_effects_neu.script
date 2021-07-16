@@ -1,0 +1,34 @@
+function on_game_start()
+    xr_effects.disable_ui_lite_with_imput = disable_ui_lite_with_imput_neu
+    xr_effects.disable_ui_inventory = disable_ui_inventory_neu
+    xr_effects.enable_ui_lite = enable_ui_lite_neu
+    xr_effects.enable_imput = enable_imput_neu
+end
+
+function disable_ui_lite_with_imput_neu(actor, npc)
+    if db.actor:is_talking() then
+        db.actor:stop_talk()
+    end
+
+    level.disable_input()
+end
+
+function disable_ui_inventory_neu(actor, npc)
+    -- Haha, no, that's the point!
+end
+
+function enable_ui_lite_neu(actor, npc, p)
+    if not p or (p and p[1] ~= "true") then
+        if ui_active_slot ~= 0 and db.actor:item_in_slot(ui_active_slot) ~= nil then
+            db.actor:activate_slot(ui_active_slot)
+        end
+    end
+
+    ui_active_slot = 0
+    level.enable_input()
+    level.show_weapon(true)
+end
+
+function enable_imput_neu(actor, npc, p)
+    level.enable_input()
+end
