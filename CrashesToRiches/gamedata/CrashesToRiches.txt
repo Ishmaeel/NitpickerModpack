@@ -1,0 +1,7 @@
+Fixes the bugged WishGranter ending.
+
+No, the fourth one.
+
+The other one is just fine.
+
+-- Ishmaeel.
