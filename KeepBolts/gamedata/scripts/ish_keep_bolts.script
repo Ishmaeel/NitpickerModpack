@@ -1,0 +1,16 @@
+local Base_Action_Move = nil
+
+function Ishy_Action_Move(sender, obj, bag, another, fourth, fifth)
+    obj = sender:CheckItem(obj, "Action_Move")
+
+    if sender.mode == "loot" and (bag == "actor_bag" or bag == "actor_equ") and IsBolt(obj) then
+        return
+    end
+
+    Base_Action_Move(sender, obj, bag)
+end
+
+function on_game_start()
+    Base_Action_Move = ui_inventory.UIInventory.Action_Move
+    ui_inventory.UIInventory.Action_Move = Ishy_Action_Move
+end
