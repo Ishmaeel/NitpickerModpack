@@ -1,0 +1,90 @@
+-- Humanized wrist watch reading addon by Ishmaeel. 
+-- I took some liberties but mainly I went with this: https://en.wikipedia.org/wiki/Date_and_time_notation_in_Ukraine
+
+function on_game_start()
+    itms_manager.use_watch = use_watch_neu
+end
+
+function use_watch_neu(hand_watch)
+    local Y, M, D, hrs, min, sec, ms = game.get_game_time():get()
+
+    local time = "search me"
+    local cond = hand_watch:condition()
+
+    if cond > 0.1 then
+        time = get_human_time(hrs, min)
+    end
+
+    -- printf(string.format("%f - %02i:%02i - %s", cond, hrs, min, time))
+
+    utils_xml.hide_menu()
+
+    actor_menu.set_msg(1, time, 3)
+end
+
+local hours = {
+    [0] = "twelve",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve"
+}
+
+local chunks = {
+    [0] = "%s",
+    "five past %s",
+    "ten past %s",
+    "quarter past %s",
+    "%s twenty",
+    "%s twenty-five",
+    "half of %s",
+    "twenty-five to %s",
+    "twenty to %s",
+    "quarter to %s",
+    "ten to %s",
+    "five to %s",
+    "%s"
+}
+
+function get_human_time(hrs, min)
+    local hrs12 = (hrs < 12 and hrs) or (hrs - 12)
+    local chunk = math.floor((min / 5) + 0.5)
+
+    hour = hours[hrs12]
+
+    if chunk > 5 then
+        hour = hours[hrs12 + 1]
+    end
+
+    if (hrs == 0 and min < 18) or (hrs == 23 and min > 27) then
+        hour = "midnight"
+    end
+
+    if hrs == 12 and min < 18 then
+        hour = (min == 0 and "high noon") or "noon"
+    end
+
+    if hrs == 11 and min > 27 then
+        hour = "noon"
+    end
+
+    local format = chunks[chunk]
+
+    if min == 0 and hrs ~= 0 and hrs ~= 12 then
+        format = "%s sharp"
+    end
+
+    if min > 57 then
+        format = "almost %s"
+    end
+
+    return string.format(format, hour)
+end
