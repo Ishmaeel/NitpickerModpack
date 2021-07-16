@@ -1,0 +1,44 @@
+local Base_Add_Counter = nil
+local Base_Item_Update = nil
+
+function Ishy_Add_Counter(cell_item, xml, obj, sec)
+    Base_Add_Counter(cell_item, xml, obj, sec)
+    calculate_weights(cell_item, obj)
+end
+
+function Ishy_Item_Update(info_item, obj, sec, flags)
+    Base_Item_Update(info_item, obj, sec, flags)
+    update_weight_display(info_item, flags)
+end
+
+function calculate_weights(cell_item, obj)
+    if obj then
+        local objw8 = obj:weight()
+        local childw8 = 0
+
+        local has_childs = cell_item:HasChild()
+        if has_childs then
+            for id, _ in pairs(cell_item.childs) do
+                local cobj = get_object_by_id(id)
+                local itemw8 = cobj and cobj:weight() or 0
+                childw8 = childw8 + itemw8
+            end
+        end
+
+        cell_item.flags.totalw8 = ((childw8 > 0) and (childw8 + objw8)) or false
+    end
+end
+
+function update_weight_display(info_item, flags)
+    if flags and flags.totalw8 then
+        info_item.weight:SetText(round_100(flags.totalw8) .. " " .. game.translate_string("st_kg") .. " total")
+    end
+end
+
+function on_game_start()
+    Base_Add_Counter = utils_ui.UICellItem.Add_Counter
+    utils_ui.UICellItem.Add_Counter = Ishy_Add_Counter
+
+    Base_Item_Update = utils_ui.UIInfoItem.Update
+    utils_ui.UIInfoItem.Update = Ishy_Item_Update
+end
