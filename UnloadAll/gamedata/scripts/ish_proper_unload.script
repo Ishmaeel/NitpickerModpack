@@ -1,0 +1,44 @@
+local Base_OnKeyboard = nil
+local E_RELEASE = ui_events.WINDOW_KEY_RELEASED
+
+function on_game_start()
+    item_weapon.unload_all_weapons = no_stop_what_are_you_doing
+
+    Base_OnKeyboard = ui_inventory.UIInventory.OnKeyboard
+    ui_inventory.UIInventory.OnKeyboard = Ishy_OnKeyboard
+end
+
+function Ishy_OnKeyboard(self, dik, keyboard_action)
+    Base_OnKeyboard(self, dik, keyboard_action)
+
+    if keyboard_action == E_RELEASE then
+        local bind = dik_to_bind(dik)
+
+        if bind == key_bindings.kCUSTOM15 then
+            unload_all_the_things(self)
+        end
+    end
+end
+
+function unload_all_the_things(self)
+    if self.mode == "inventory" then
+        db.actor:iterate_ruck(unload_weapon)
+    end
+
+    if self.mode == "loot" then
+        local npc = self.npc_id and get_object_by_id(self.npc_id)
+        if npc and npc.iterate_inventory then
+            npc:iterate_inventory(unload_weapon)
+        end
+    end
+end
+
+function unload_weapon(temp, obj)
+    if IsWeapon(obj) and (not IsItem("fake_ammo_wpn", obj:section())) then
+        obj:force_unload_magazine(true)
+    end
+end
+
+function no_stop_what_are_you_doing()
+    -- stop doing things the wrong way.
+end
