@@ -1,0 +1,22 @@
+function itms_manager.bolt_manager() -- limit bolt count in actor inventory
+	ResetTimeEvent("cycle","bolt_manager",60)
+	
+	local sim = alife()
+	local bolt_max_num = itms_manager.ini_manager:r_float_ex("settings","bolt_max_num") or 99
+	local cnt = 0
+	local id, sec, se_obj
+	
+	local function itr(temp, obj)
+		sec = obj:section()
+		if (sec == "bolt") or (sec == "bolt_bullet") then
+			cnt = cnt + 1
+			if (cnt > bolt_max_num) then
+                obj:destroy_object()
+			end
+		end
+	end
+
+	db.actor:iterate_ruck(itr, nil)
+	
+	return false
+end
