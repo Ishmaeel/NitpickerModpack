@@ -1,3 +1,5 @@
+-- LuaFormatter off
+
 utils_ui.stats_table["weapon"] = {
   ["accuracy"]                   = { index= 1, typ= "float",   name= "ui_inv_accuracy",       icon_p= "ui_wp_prop_tochnost",           icon_n= "", track= false,  magnitude= 1,    unit= "st_perc", proper_unit="InverseDispersion",  compare= false, sign= false, show_always= true, value_functor= {"ish_item_stats","scale_100","utils_ui","prop_accuracry"} },
   ["handling"]                   = { index= 2, typ= "float",   name= "ui_inv_handling",       icon_p= "ui_wp_prop_ergonomics",         icon_n= "", track= false,  magnitude= 1,    unit= "st_perc", proper_unit="CameraInertia",      compare= false, sign= false, show_always= true, value_functor= {"ish_item_stats","scale_100","utils_ui","prop_handling"} },
@@ -62,32 +64,61 @@ utils_ui.stats_table["booster"] = {
   ["boost_max_weight"]           = { index= 16,  typ= "float",  name= "ui_inv_outfit_additional_weight",        icon_p= "ui_am_propery_08",                 icon_n= "ui_am_prop_max_weight",           track= false, magnitude= 1000,   unit= "st_g",           compare= false, sign= true, show_always= false },
 }
 
+-- LuaFormatter on
+
 -- custom functor to call the original function in utils_ui and scale the return value up to a percent. 
 -- this is to prevent the main weapon showing (+1) on all stats when compared to itself due to rounding errors.
 function scale_100(obj, sec, base_file, base_func, param)
-  local base_value = _G[base_file][base_func](obj, sec, param)
-  return math.floor(base_value * 100)
+    local base_value = _G[base_file][base_func](obj, sec, param)
+    return math.floor(base_value * 100)
 end
 
 -- custom functor to retrieve the highest pellet count from compatible ammunition and multiply with the base damage value.
 -- this is to display a better damage value for shotguns that can fire buck shot.
 function scale_100_for_pellets(obj, sec, base_file, base_func, param)
-  local base_damage = scale_100(obj, sec, base_file, base_func, param)
-  
-  local max_pellet_count = 0
-  local max_pellet_name = "unknown"
+    local base_damage = scale_100(obj, sec, base_file, base_func, param)
 
-  local id = obj and obj:id()
-  local ammo_list = utils_item.get_ammo(sec, id)
+    local max_pellet_count = 0
+    local max_pellet_name = "unknown"
 
-  for _, ammo_name in pairs(ammo_list) do
-      if ammo_name ~= "ammo_12x70_buck_self" then
-          local pellet_count = ini_sys:r_float_ex(ammo_name, "buck_shot") or 1
-          if pellet_count > max_pellet_count then
-              max_pellet_count = pellet_count
-              max_pellet_name = ammo_name
-          end
-      end
-  end
-  return base_damage * max_pellet_count
+    local id = obj and obj:id()
+    local ammo_list = utils_item.get_ammo(sec, id)
+
+    for _, ammo_name in pairs(ammo_list) do
+        if ammo_name ~= "ammo_12x70_buck_self" then
+            local pellet_count = ini_sys:r_float_ex(ammo_name, "buck_shot") or 1
+            if pellet_count > max_pellet_count then
+                max_pellet_count = pellet_count
+                max_pellet_name = ammo_name
+            end
+        end
+    end
+    return base_damage * max_pellet_count
+end
+
+Base_UIInfoItem_Update = nil
+
+function Ish_UIInfoItem_Update(sender, obj, sec, flags)
+    Base_UIInfoItem_Update(sender, obj, sec, flags)
+
+    if obj and sender.can_compare then
+        local cls = obj:clsid()
+        local slot = SYS_GetParam(2, sec, "slot", -1) + 1
+        local obj_b = slot > 0 and db.actor:item_in_slot(slot)
+
+        if obj_b and obj:id() == obj_b:id() then -- same thing!
+            for _, ele in pairs(sender.stats) do
+                local newtext = string.gsub(ele.txt:GetText(), "+", "")
+                ele.txt:SetText(newtext)
+                ele.txt:SetTextColor(utils_xml.get_color("white", true))
+                ele.comp:Show(false)
+            end
+        end
+    end
+end
+
+-- ??????
+function on_game_start()
+    Base_UIInfoItem_Update = utils_ui.UIInfoItem.Update
+    utils_ui.UIInfoItem.Update = Ish_UIInfoItem_Update
 end
