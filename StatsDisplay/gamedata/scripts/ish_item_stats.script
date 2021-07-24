@@ -100,6 +100,8 @@ end
 
 Base_UIInfoItem_Update = nil
 
+local w8_caption = game.translate_string("ui_inv_outfit_additional_weight")
+
 -- update the item tooltip to prevent display of green +1 delta indicators in all attributes when an equipped item is compared to itself
 function Ish_UIInfoItem_Update(sender, obj, sec, flags)
     Base_UIInfoItem_Update(sender, obj, sec, flags)
@@ -111,7 +113,10 @@ function Ish_UIInfoItem_Update(sender, obj, sec, flags)
 
         if obj_b and obj:id() == obj_b:id() then -- same thing!
             for _, ele in pairs(sender.stats) do
-                local newtext = string.gsub(ele.txt:GetText(), "+", "")
+                local newtext = ele.txt:GetText()
+                if ele.cap:GetText() ~= w8_caption then
+                    newtext = string.gsub(newtext, "+", "") -- strip plus sign from all stats but wait. w8. weight.
+                end
                 ele.txt:SetText(newtext)
                 ele.txt:SetTextColor(utils_xml.get_color("white", true))
                 ele.comp:Show(false)
