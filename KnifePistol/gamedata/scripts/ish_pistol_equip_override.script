@@ -1,3 +1,6 @@
+-- KnifePistol - Nitpicker's Modpack
+-- Last modified: 2021.07.26
+-- https://github.com/Ishmaeel/NitpickerModpack
 function on_game_start()
     ui_inventory.UIInventory.Action_Equip = myAction_Equip
 end
