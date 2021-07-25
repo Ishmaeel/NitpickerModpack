@@ -1,0 +1,88 @@
+-- CharacterNameSaves - Nitpicker's Modpack
+-- Last modified: 2021.07.26
+-- https://github.com/Ishmaeel/NitpickerModpack
+local base_user_name = nil
+
+local fs = getFS()
+
+local function actor_character_name()
+    return db.actor:character_name()
+end
+
+local function news(str)
+    printf("# " .. str)
+end
+
+if d and d.news then
+    news = d.news
+end
+
+function on_game_start()
+    if new_name then
+        news("not compatible with 'new_name.script'.")
+        return
+    end
+
+    RegisterScriptCallback("on_game_load", on_game_load)
+
+    base_user_name = _G.user_name
+    _G.user_name = actor_character_name
+end
+
+function on_game_load()
+    rename_saves()
+end
+
+function rename_saves()
+    -- This forces a refresh of file system cache I guess.
+    fs:file_list_open_ex("$game_saves$", bit_or(FS.FS_ListFiles, FS.FS_RootOnly), "*")
+
+    local user_save = fs:update_path('$game_saves$', base_user_name() .. " - autosave")
+    local char_save = fs:update_path('$game_saves$', actor_character_name() .. " - autosave")
+
+    local level_name = level.name()
+    if level_name then
+        local level_title = game.translate_string(level_name)
+        if level_title then
+            level_title = string.lower(level_title:gsub("[()]", ""))
+            char_save = char_save .. " - " .. level_title
+        end
+    end
+
+    rename_save(user_save, char_save)
+
+    return true
+end
+
+function rename_save(first, second)
+    local ready = check(first, ".scop") and check(first, ".scoc")
+
+    if not ready then
+        news("Autosave not found.")
+        return
+    end
+
+    rename(first, second, ".scop")
+    rename(first, second, ".scoc")
+
+    printf("# Renaming %s -> %s", first, second)
+
+    local done = check(second, ".scop") and check(second, ".scoc")
+
+    news(done and "Autosave updated." or "Autosave update failed.")
+end
+
+function check(first, ext)
+    first = first .. ext
+
+    local exists = fs:exist(first) and true or false
+
+    return exists
+end
+
+function rename(first, second, ext)
+    first = first .. ext
+    second = second .. ext
+
+    fs:file_rename(first, second, true)
+end
