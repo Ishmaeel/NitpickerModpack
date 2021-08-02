@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mm_loot_all">
+		<text>Loot all (ENTER/SPACE)</text>
+	</string>
+</string_table>

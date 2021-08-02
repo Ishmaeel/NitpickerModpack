@@ -42,6 +42,11 @@ Using the wrist watch displays the time in "human-speakable" format. Also none o
 
 ![ReadWatch](fomod/images/Banners-01-08.png)
 
+## SkinningWithSpace
+Mutant loot (skinning) window now recognizes 100% more shortcut keys for taking all mutant parts.
+
+[INSERT_BANNER_HERE]
+
 ## StatsDisplay
 In item tooltips and detail views, displays numerical item stats instead of colored bars.
 
