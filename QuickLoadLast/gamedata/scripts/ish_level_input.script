@@ -1,0 +1,32 @@
+function level_input.action_quick_load(self, dik, bind)
+    local flags = {}
+    --	You must check in your callback, and set flags.ret = true if an action took place
+    flags.ret = false
+    SendScriptCallback("on_before_load_input", dik, bind, flags)
+    if (flags.ret == true) then
+        return true
+    end
+
+    if not (device():is_paused()) then
+        device():pause(true)
+    end
+
+    local flist = getFS():file_list_open_ex("$game_saves$", bit_or(FS.FS_ListFiles, FS.FS_RootOnly), "*" .. ui_load_dialog.saved_game_extension)
+    local f_cnt = flist and flist:Size() or 0
+
+    if (f_cnt > 0) then
+        flist:Sort(FS.FS_sort_by_modif_down)
+
+        for it = 0, f_cnt - 1 do
+            local file_name = flist:GetAt(it):NameFull():sub(0, -6):lower()
+
+            -- grab last modified save
+            if true then
+                exec_console_cmd("load " .. file_name)
+                return true
+            end
+        end
+    end
+
+    return true
+end

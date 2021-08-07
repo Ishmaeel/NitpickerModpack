@@ -37,6 +37,11 @@ Prevents closing the inventory window when disassembling items. Works with and w
 
 ![NoInventoryCloseDisassembly](fomod/images/Banners-01-07.png)
 
+## QuickLoadLast
+<kbd>F9</kbd> loads the last save *ever*, not only the last quick save. Also, "Load Last" menu item is at the top of the main menu.
+
+[INSERT_BANNER_HERE]
+
 ## ReadWatch
 Using the wrist watch displays the time in "human-speakable" format. Also none of that AM/PM nonsense.
 
