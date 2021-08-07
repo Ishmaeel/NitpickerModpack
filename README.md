@@ -40,7 +40,7 @@ Prevents closing the inventory window when disassembling items. Works with and w
 ## QuickLoadLast
 <kbd>F9</kbd> loads the last save *ever*, not only the last quick save. Also, "Load Last" menu item is at the top of the main menu.
 
-[INSERT_BANNER_HERE]
+![QuickLoadLast](fomod/images/Banners-01-12.png)
 
 ## ReadWatch
 Using the wrist watch displays the time in "human-speakable" format. Also none of that AM/PM nonsense.
@@ -50,7 +50,7 @@ Using the wrist watch displays the time in "human-speakable" format. Also none o
 ## SkinningWithSpace
 Mutant loot (skinning) window now recognizes 100% more shortcut keys for taking all mutant parts.
 
-[INSERT_BANNER_HERE]
+![SkinningWithSpace](fomod/images/Banners-01-13.png)
 
 ## StatsDisplay
 In item tooltips and detail views, displays numerical item stats instead of colored bars.
