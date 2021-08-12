@@ -38,7 +38,7 @@ Prevents closing the inventory window when disassembling items. Works with and w
 ![NoInventoryCloseDisassembly](fomod/images/Banners-01-07.png)
 
 ## QuickLoadLast
-<kbd>F9</kbd> loads the last save *ever*, not only the last quick save. Also, "Load Last" menu item is at the top of the main menu.
+<kbd>F9</kbd> loads the last save *ever*, not only the last quick save. Also, "Last Save" menu item is at the top of the main menu.
 
 ![QuickLoadLast](fomod/images/Banners-01-12.png)
 
