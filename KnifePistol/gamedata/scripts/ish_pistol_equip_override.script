@@ -1,5 +1,5 @@
 -- KnifePistol - Nitpicker's Modpack
--- Last modified: 2021.07.26
+-- Last modified: 2021.08.13
 -- https://github.com/Ishmaeel/NitpickerModpack
 function on_game_start()
     ui_inventory.UIInventory.Action_Equip = myAction_Equip
@@ -10,57 +10,54 @@ local snd_item_to_belt = sound_object([[interface\inv_belt]])
 
 function myAction_Equip(self, obj, bag)
 
-    d.try(function()
-        printf("[ISH.Pistol] override equip behavior.")
+    printf("[ISH.Pistol] override equip behavior.")
 
-        obj = self:CheckItem(obj, "Action_Equip")
+    obj = self:CheckItem(obj, "Action_Equip")
 
-        -- Belt
-        if IsArtefact(obj) then
-            db.actor:move_to_belt(obj)
-            self:PlaySND(snd_item_to_belt)
+    -- Belt
+    if IsArtefact(obj) then
+        db.actor:move_to_belt(obj)
+        self:PlaySND(snd_item_to_belt)
 
-            -- Slots
-        else
-            -- Gather free compatible slots
-            local slot = (SYS_GetParam(2, obj:section(), "slot") or -1) + 1
+        -- Slots
+    else
+        -- Gather free compatible slots
+        local slot = (SYS_GetParam(2, obj:section(), "slot") or -1) + 1
 
-            local cc = self.CC["actor_equ"]
-            local free_slots = {}
-            local cslots = self.slot_cell[slot] or {}
-            for i = 1, #cslots do
-                local ci = cc.cell[cslots[i]]
-                if ci and (not ci:IsShown()) then
+        local cc = self.CC["actor_equ"]
+        local free_slots = {}
+        local cslots = self.slot_cell[slot] or {}
+        for i = 1, #cslots do
+            local ci = cc.cell[cslots[i]]
+            if ci and (not ci:IsShown()) then
 
-                    table.insert(free_slots, cslots[i])
-                end
+                table.insert(free_slots, cslots[i])
             end
-
-            if is_empty(free_slots) then
-                if slot == 2 then -- pistol?
-                    slot = 1 -- knife!
-                end
-
-                table.insert(free_slots, slot)
-            end
-
-            -- Get free slot
-            local slot_new = free_slots[1]
-
-            -- Just to make sure
-            local obj_in = cc:GetObj(slot_new)
-            if obj_in then
-                db.actor:move_to_ruck(obj_in)
-            end
-
-            -- Move to slot
-            db.actor:move_to_slot(obj, slot_new)
-
-            self:PlaySND(snd_item_to_slot)
         end
 
-        self:On_Item_Update()
+        if is_empty(free_slots) then
+            if slot == 2 then -- pistol?
+                slot = 1 -- knife!
+            end
 
-    end)
+            table.insert(free_slots, slot)
+        end
+
+        -- Get free slot
+        local slot_new = free_slots[1]
+
+        -- Just to make sure
+        local obj_in = cc:GetObj(slot_new)
+        if obj_in then
+            db.actor:move_to_ruck(obj_in)
+        end
+
+        -- Move to slot
+        db.actor:move_to_slot(obj, slot_new)
+
+        self:PlaySND(snd_item_to_slot)
+    end
+
+    self:On_Item_Update()
 
 end
