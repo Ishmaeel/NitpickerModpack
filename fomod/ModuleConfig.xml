@@ -36,6 +36,16 @@
 								<type name="Recommended"/>
 							</typeDescriptor>
 						</plugin>
+						<plugin name="FastTransfer">
+							<description>Hold down shift and hover to quickly move many items between bags without clicking.</description>
+							<image path="fomod\images\banners-01-14.png" />
+							<files>
+								<folder source="FastTransfer\gamedata" destination="gamedata" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Recommended"/>
+							</typeDescriptor>
+						</plugin>
 						<plugin name="KeepBolts">
 							<description>Prevents player from moving bolts to bodies and stashes.</description>
 							<image path="fomod\images\banners-01-04.png" />

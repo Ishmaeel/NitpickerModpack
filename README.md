@@ -17,6 +17,11 @@ Fixes crash with a specific WishGranter ending. May not work with some addons th
 
 ![CrashesToRiches](fomod/images/Banners-01-03.png)
 
+## FastTransfer
+Hold down shift to quickly move many items between bags.
+
+![FastTransfer](fomod/images/Banners-01-14.png)
+
 ## KeepBolts
 Prevents player from moving bolts to bodies and stashes (where they would disappear after a game reload).
 
