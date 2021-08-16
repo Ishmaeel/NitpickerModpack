@@ -18,7 +18,7 @@ Fixes crash with a specific WishGranter ending. May not work with some addons th
 ![CrashesToRiches](fomod/images/Banners-01-03.png)
 
 ## FastTransfer
-Hold down shift to quickly move many items between bags.
+Allows moving many items quickly without clicking, by holding down the shift key and hovering over inventory icons.
 
 ![FastTransfer](fomod/images/Banners-01-14.png)
 
