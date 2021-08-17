@@ -1,5 +1,5 @@
 -- FastTransfer - Nitpicker's Modpack
--- Last modified: 2021.08.14
+-- Last modified: 2021.08.17
 -- https://github.com/Ishmaeel/NitpickerModpack
 --
 last_url = nil
@@ -12,7 +12,9 @@ function Ishy_On_Hover(self, idx)
             local move_info = {bag = self.ID, idx = idx, ts = math.floor(time_global() / 1000)}
             new_url = move_info.bag .. "_" .. move_info.idx .. "_" .. move_info.ts
 
-            if last_url == new_url then return end
+            if last_url == new_url then
+                return
+            end
             last_url = new_url
 
             CreateTimeEvent("Ishy_On_Hover", "Move_Items_Delayed", 0, Move_Items_Delayed, move_info)
@@ -33,10 +35,12 @@ function Move_Items_Delayed(move_info)
         local obj = self.CC[bag]:GetObj(idx)
         bag, idx = self:Picker_Ownership(bag, idx, obj)
 
-        if self:Cond_Childs(obj, bag) then
-            self:Action_Move_All(obj, bag)
-        else
-            self:Action_Move(obj, bag)
+        if self:Cond_Move(obj, bag) then
+            if self:Cond_Childs(obj, bag) then
+                self:Action_Move_All(obj, bag)
+            else
+                self:Action_Move(obj, bag)
+            end
         end
     end
 
