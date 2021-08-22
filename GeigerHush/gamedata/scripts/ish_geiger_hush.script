@@ -1,0 +1,45 @@
+-- GeigerHush - Nitpicker's Modpack
+-- Last modified: 2021.08.21
+-- https://github.com/Ishmaeel/NitpickerModpack
+local next_touchy = 0
+local OG_CZone_Touch = nil
+local hush_min = 100
+local hush_max = 500
+
+local rad_zones = {
+    ["zone_field_radioactive"] = true,
+    ["zone_field_radioactive_weak"] = true,
+    ["zone_field_radioactive_average"] = true,
+    ["zone_field_radioactive_strong"] = true,
+    ["zone_radioactive"] = true,
+    ["zone_radioactive_weak"] = true,
+    ["zone_radioactive_average"] = true,
+    ["zone_radioactive_strong"] = true
+}
+
+function news(format, ...)
+    if d and d.news then
+        d.news(format, ...)
+    end
+end
+
+function my_CZone_Touch(obj)
+    local retVal = OG_CZone_Touch(obj)
+
+    if retVal and rad_zones[obj:section()] then
+        if next_touchy > time_global() then
+            retVal = false
+        else
+            next_touchy = time_global() + math.random(hush_min, hush_max)
+        end
+
+        news("sec %s  %s", obj:section(), retVal)
+    end
+
+    return retVal
+end
+
+function on_game_start()
+    OG_CZone_Touch = _G.CZone_Touch
+    _G.CZone_Touch = my_CZone_Touch
+end
