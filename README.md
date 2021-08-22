@@ -22,6 +22,11 @@ Allows moving many items quickly without clicking, by holding down the shift key
 
 ![FastTransfer](fomod/images/Banners-01-14.png)
 
+## GeigerHush
+Tones down the intolerable Geiger noise spam so you can hear yourself think when you're near multiple rad zones. 
+
+![GeigerHush](fomod/images/Banners-01-00.png)
+
 ## KeepBolts
 Prevents player from moving bolts to bodies and stashes (where they would disappear after a game reload).
 
