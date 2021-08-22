@@ -1,0 +1,10 @@
+<plugin name="PLUGIN_NAME_HERE">
+    <description>PLUGIN_DESCRIPTION_HERE</description>
+    <image path="fomod\images\banners-01-00.png" />
+    <files>
+        <folder source="PLUGIN_NAME_HERE\gamedata" destination="gamedata" priority="0" />
+    </files>
+    <typeDescriptor>
+        <type name="Recommended"/>
+    </typeDescriptor>
+</plugin>

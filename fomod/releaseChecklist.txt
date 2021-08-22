@@ -1,0 +1,10 @@
+* Add new module
+* Draw new banner for new module
+* Optimize and add banner image
+* Use Plugin.xml as template
+* Add new module to ModuleConfig.xml
+* Add new module to repack.bat
+* Update README
+* Update THANKS
+* Bump version in info.xml
+* Create tagged release
