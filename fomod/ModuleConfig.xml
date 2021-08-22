@@ -46,6 +46,16 @@
 								<type name="Recommended"/>
 							</typeDescriptor>
 						</plugin>
+						<plugin name="GeigerHush">
+							<description>Keep the ticking noises from Geiger counter within tolerable limits.</description>
+							<image path="fomod\images\banners-01-00.png" />
+							<files>
+								<folder source="GeigerHush\gamedata" destination="gamedata" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Recommended"/>
+							</typeDescriptor>
+						</plugin>
 						<plugin name="KeepBolts">
 							<description>Prevents player from moving bolts to bodies and stashes.</description>
 							<image path="fomod\images\banners-01-04.png" />
