@@ -48,7 +48,7 @@
 						</plugin>
 						<plugin name="GeigerHush">
 							<description>Keep the ticking noises from Geiger counter within tolerable limits.</description>
-							<image path="fomod\images\banners-01-00.png" />
+							<image path="fomod\images\banners-01-15.png" />
 							<files>
 								<folder source="GeigerHush\gamedata" destination="gamedata" priority="0" />
 							</files>
