@@ -1,9 +1,9 @@
 -- FastTransfer - Nitpicker's Modpack
--- Last modified: 2021.08.17
+-- Last modified: 2021.08.29
 -- https://github.com/Ishmaeel/NitpickerModpack
 --
 last_url = nil
-enabled = {actor_bag = true, npc_bag = true}
+enabled = {actor_bag = true, npc_bag = true, actor_trade = true, actor_trade_bag = true, npc_trade = true, npc_trade_bag = true}
 
 function Ishy_On_Hover(self, idx)
     if idx and enabled[self.ID] then
