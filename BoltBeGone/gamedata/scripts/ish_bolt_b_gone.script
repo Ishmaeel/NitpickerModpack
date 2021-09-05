@@ -1,0 +1,14 @@
+-- BoltBeGone - Nitpicker's Modpack
+-- Last modified: 2021.09.06
+-- https://github.com/Ishmaeel/NitpickerModpack
+function my_keep_item(npc, item)
+    og_keep_item(npc, item)
+
+    if IsBolt(item) then
+        --printf("! Be gone, %s #%s!", item:section(), item:id())
+        item:destroy_object()
+    end
+end
+
+og_keep_item = death_manager.keep_item
+death_manager.keep_item = my_keep_item

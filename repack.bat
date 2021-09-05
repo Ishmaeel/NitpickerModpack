@@ -1,5 +1,5 @@
 set NAME=NitpickerModpack
-set CONTENTS=fomod README.md THANKS.md BoltManager CharacterNameSaves CrashesToRiches FastTransfer GeigerHush KeepBolts KnifePistol LogFixDefaultControls NoInventoryCloseDisassembly QuickLoadLast ReadWatch SkinningWithSpace StatsDisplay TotalWeights UnloadAll
+set CONTENTS=fomod README.md THANKS.md BoltBeGone BoltManager CharacterNameSaves CrashesToRiches FastTransfer GeigerHush KeepBolts KnifePistol LogFixDefaultControls NoInventoryCloseDisassembly QuickLoadLast ReadWatch SkinningWithSpace StatsDisplay TotalWeights UnloadAll
 
 set PATH=C:\Program Files\7-Zip\;%PATH%
 

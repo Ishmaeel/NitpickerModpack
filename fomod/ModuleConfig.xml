@@ -6,6 +6,16 @@
 			<optionalFileGroups order="Explicit">
 				<group name="Main" type="SelectAny">
 					<plugins order="Explicit">
+						<plugin name="BoltBeGone">
+							<description>You know how there is always a single bolt in the pockets of a dead body after a game load, even if it was already looted? Annoyed with it? Me too, buddy, me too.</description>
+							<image path="fomod\images\banners-01-16.png" />
+							<files>
+								<folder source="BoltBeGone\gamedata" destination="gamedata" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Recommended"/>
+							</typeDescriptor>
+						</plugin>
 						<plugin name="BoltManager">
 							<description>Fixes the vanilla bolt manager which attempted to limit the number of bolts in player inventory but didn't work due to a bug.</description>
 							<image path="fomod\images\banners-01-01.png" />
