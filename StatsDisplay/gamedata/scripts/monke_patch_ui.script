@@ -1,5 +1,5 @@
 -- StatsDisplay - Nitpicker's Modpack
--- Last modified: 2021.09.14
+-- Last modified: 2021.09.14.R2
 -- https://github.com/Ishmaeel/NitpickerModpack
 --
 -- This is a compatibility patch for:
@@ -20,6 +20,10 @@ end
 
 if ish_item_stats and arti_outfits and arti_outfits.get_max_condition then
     utils_ui.stats_table["outfit"]["max_condition"] = { index=5, typ="float", name="ui_inv_max_condition", icon_p="ui_am_propery_01", icon_n="", track=false, magnitude=1, unit="%", compare=false, sign=false, show_always=false, value_functor={"arti_outfits","get_max_condition"}}
+end
+
+if ish_item_stats and arti_outfits and arti_outfits.ui_max_condition then
+    utils_ui.stats_table["outfit"]["max_condition"] = { index=5, typ="float", name="ui_inv_max_condition", icon_p="ui_am_propery_01", icon_n="", track=false, magnitude=1, unit="%", compare=false, sign=false, show_always=false, value_functor={"arti_outfits","ui_max_condition"}}
 end
 
 -- LuaFormatter on
