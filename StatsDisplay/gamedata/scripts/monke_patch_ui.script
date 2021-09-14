@@ -9,7 +9,6 @@
 --
 -- This patch patches the patching done by OAM/OPO and then patches StatsDisplay to patch back the functionality patched in by OAM/OPO that was patched out by this patch.
 -- If your copy of "monke_patch_ui.script" does not look like the OG versions provided below, then your OAM/OPO is a different version and this patch may need patching.
--- Last modified: 2021.09.14
 --
 -- NOTE: To work correctly, StatsDisplay needs to overwrite OAM and OPO. If using ModOrganizer2, StatsDisplay needs to sit at the highest loading order.
 --
