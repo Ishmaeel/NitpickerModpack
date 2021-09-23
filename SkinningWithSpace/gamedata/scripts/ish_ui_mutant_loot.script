@@ -1,5 +1,5 @@
 -- SkinningWithSpace - Nitpicker's Modpack
--- Last modified: 2021.08.02
+-- Last modified: 2021.09.23
 -- https://github.com/Ishmaeel/NitpickerModpack
 
 function Ishy_OnKeyboard(sender, dik, keyboard_action)
@@ -7,7 +7,7 @@ function Ishy_OnKeyboard(sender, dik, keyboard_action)
     if (res == false) then
         sender.CC:OnKeyboard(dik, keyboard_action)
 
-        if (dik == DIK_keys.DIK_ESCAPE or dik == DIK_keys.DIK_SPACE) then
+        if (dik == DIK_keys.DIK_RETURN or dik == DIK_keys.DIK_SPACE) then
             sender:OnButton_LootAll()
         elseif (dik == DIK_keys.DIK_ESCAPE) then
             sender:Close()
