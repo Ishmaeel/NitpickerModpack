@@ -1,0 +1,11 @@
+﻿TYPE,CONTENT,DESCRIPTION,PRIORITY,INDENT,AUTHOR,RESPONSIBLE,DATE,DATE_LANG
+task,Add new module,,4,1,,,,en,,,,,,,,,
+task,Draw new banner for new module,,4,1,,,,en,,,,,,,,,
+task,Optimize and add banner image,,4,1,,,,en,,,,,,,,,
+task,Use Plugin.xml as template,,4,1,,,,en,,,,,,,,,
+task,Add new module to ModuleConfig.xml,,4,1,,,,en,,,,,,,,,
+task,Add new module to repack.bat,,4,1,,,,en,,,,,,,,,
+task,Update README,,4,1,,,,en,,,,,,,,,
+task,Update THANKS,,4,1,,,,en,,,,,,,,,
+task,Bump version in info.xml,,4,1,,,,en,,,,,,,,,
+task,Create tagged release,,4,1,,,,en,,,,,,,,,
