@@ -96,6 +96,16 @@
 								<type name="Recommended"/>
 							</typeDescriptor>
 						</plugin>
+						<plugin name="NahMusic">
+							<description>I prefer playing without music, but I like hearing it in main menu. You too?</description>
+							<image path="fomod\images\banners-01-17.png" />
+							<files>
+								<folder source="NahMusic\gamedata" destination="gamedata" priority="0" />
+							</files>
+							<typeDescriptor>
+								<type name="Recommended"/>
+							</typeDescriptor>
+						</plugin>
 						<plugin name="NoInventoryCloseDisassembly">
 							<description>Prevents closing the inventory window when disassembling items.</description>
 							<image path="fomod\images\banners-01-07.png" />

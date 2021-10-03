@@ -1,0 +1,59 @@
+-- NahMusic - Nitpicker's Modpack
+-- Last modified: 2021.10.03
+-- https://github.com/Ishmaeel/NitpickerModpack
+--
+-- luacheck:ignore 131/main_menu
+--
+local trace = (dph and dph.info) or function() end
+
+local saved_volume
+
+function on_game_start()
+    trace("on_game_start")
+    RegisterScriptCallback("on_console_execute", on_console_execute)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_net_destroy", actor_on_net_destroy)
+end
+
+function actor_on_first_update()
+    trace("actor_on_first_update")
+    store()
+    silence()
+end
+
+function actor_on_net_destroy()
+    trace("actor_on_net_destroy")
+    restore()
+end
+
+function main_menu(state)
+    trace("Main menu: %s", state)
+    if saved_volume then
+        if state then
+            restore()
+        else
+            silence()
+        end
+    end
+end
+
+function store()
+    trace("store")
+    saved_volume = math.max(get_console_cmd(2, 'snd_volume_music'), saved_volume or 0)
+end
+
+function restore()
+    trace("restore")
+    exec_console_cmd('snd_volume_music ' .. tostring(saved_volume))
+end
+
+function silence()
+    trace("silence")
+    exec_console_cmd('snd_volume_music 0')
+end
+
+function on_console_execute(cmd, arg)
+    if cmd == "snd_volume_music" then
+        trace("Exec: %s %s", cmd, arg)
+    end
+end

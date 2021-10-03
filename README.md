@@ -47,6 +47,11 @@ The Ultimate Nitpick. Removes two unused settings from `default_controls.ltx` to
 
 ![LogFixDefaultControls](fomod/images/banners-01-06.png)
 
+## NahMusic
+Turns off music while playing without altering main volume settings. For those who like to hear music in main menu but not in game.  
+
+![NahMusic](fomod/images/banners-01-17.png)
+
 ## NoInventoryCloseDisassembly
 Prevents closing the inventory window when disassembling items. Works with and without item animations.
 

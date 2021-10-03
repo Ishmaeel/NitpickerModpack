@@ -1,0 +1,11 @@
+-- NahMusic - Nitpicker's Modpack
+-- Last modified: 2021.10.03
+-- https://github.com/Ishmaeel/NitpickerModpack
+--
+-- Intentionally left blank to disable vanilla dynamic music functionality.
+--
+-- luacheck:ignore 113
+-- luacheck:ignore 131
+--
+function main_menu_on() ish_eine_kleine_nah_music.main_menu(true) end
+function main_menu_off() ish_eine_kleine_nah_music.main_menu(false) end
