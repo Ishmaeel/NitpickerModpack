@@ -17,7 +17,6 @@ end
 
 function actor_on_first_update()
     trace("actor_on_first_update")
-    store()
     silence()
 end
 
@@ -37,11 +36,6 @@ function main_menu(state)
     end
 end
 
-function store()
-    trace("store")
-    saved_volume = math.max(get_console_cmd(2, 'snd_volume_music'), saved_volume or 0)
-end
-
 function restore()
     trace("restore")
     exec_console_cmd('snd_volume_music ' .. tostring(saved_volume))
@@ -49,6 +43,7 @@ end
 
 function silence()
     trace("silence")
+    saved_volume = get_console_cmd(2, 'snd_volume_music')
     exec_console_cmd('snd_volume_music 0')
 end
 
