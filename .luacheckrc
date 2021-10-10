@@ -21,6 +21,7 @@ new_globals = {
    "game",
    "gameplay_disguise",
    "get_console_cmd",
+   "get_console",
    "get_object_by_id",
    "ini_sys",
    "ish_campfire_debug",
