@@ -58,4 +58,4 @@ function utils_ui.prepare_stats_table()
 	}
 end
 
---[[ END OPO "monke_patch_ui.script" ]] 
+--[[ END OPO "monke_patch_ui.script" ]]
