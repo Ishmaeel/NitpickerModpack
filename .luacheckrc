@@ -1,4 +1,5 @@
---luacheck:ignore 131
+-- LuaFormatter off
+-- luacheck:ignore 131
 allow_defined_top = true
 max_line_length = 999
 new_globals = {
@@ -33,6 +34,7 @@ new_globals = {
    "key_state",
    "level_weathers",
    "level",
+   "monke_patch_ui",
    "on_game_start",
    "outfit_speed",
    "parse_list",
@@ -58,5 +60,7 @@ new_globals = {
 ignore = {
    "_$",
    "131/on_game_start",
-   "131/scale_100_for_pellets"
+   "131/scale_100_for_pellets",
+   "131/apply_compatibility_patches"
 }
+-- LuaFormatter on

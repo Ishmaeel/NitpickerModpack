@@ -1,5 +1,5 @@
 -- StatsDisplay - Nitpicker's Modpack
--- Last modified: 2021.10.10
+-- Last modified: 2021.10.13
 -- https://github.com/Ishmaeel/NitpickerModpack
 -- LuaFormatter off
 
@@ -67,6 +67,10 @@ function override_stats_table()
     ["boost_chemburn_immunity"]    = { index= 15,  typ= "float",  name= "ui_inv_outfit_chemical_burn_protection", icon_p= "ui_am_prop_chem",                  icon_n= "ui_am_prop_chemburn_immunity",    track= false, magnitude= 500,    unit= "st_perc",        compare= false, sign= true, show_always= false },
     ["boost_max_weight"]           = { index= 16,  typ= "float",  name= "ui_inv_outfit_additional_weight",        icon_p= "ui_am_propery_08",                 icon_n= "ui_am_prop_max_weight",           track= false, magnitude= 1000,   unit= "st_g",           compare= false, sign= true, show_always= false },
     }
+
+    if monke_patch_ui and monke_patch_ui.apply_compatibility_patches then
+        monke_patch_ui.apply_compatibility_patches()
+    end
 end
 -- LuaFormatter on
 
