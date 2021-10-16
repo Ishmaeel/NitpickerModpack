@@ -36,6 +36,7 @@ new_globals = {
    "level",
    "monke_patch_ui",
    "on_game_start",
+   "outfit_speed_mcm",
    "outfit_speed",
    "parse_list",
    "printf",
