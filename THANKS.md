@@ -10,8 +10,8 @@ https://www.dafont.com/amazstalker.font
 _eric7237cire_\
 https://www.moddb.com/mods/stalker-anomaly/addons/mouse-over-transfer-items
 
-**Difficulty based artifact stats** for **StatsDisplay** - original research and development by xcvb/bvcx
+**Difficulty based artifact stats** for **StatsDisplay** - original research and development by xcvb/bvcx\
 https://www.moddb.com/members/bvcx/addons
 
-Russian translation for **TotalWeights** by JonySnowball 
+Russian translation for **TotalWeights** by JonySnowball\
 https://github.com/JonySnowball
