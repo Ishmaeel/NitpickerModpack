@@ -43,6 +43,7 @@ new_globals = {
    "RegisterScriptCallback",
    "relation_registry",
    "RemoveTimeEvent",
+   "round_100",
    "SIMBOARD",
    "strformat",
    "surge_manager",
