@@ -1,5 +1,5 @@
 -- TotalWeights - Nitpicker's Modpack
--- Last modified: 2021.07.26
+-- Last modified: 2021.10.19
 -- https://github.com/Ishmaeel/NitpickerModpack
 local Base_Add_Counter = nil
 local Base_Item_Update = nil
@@ -34,7 +34,7 @@ end
 
 function update_weight_display(info_item, flags)
     if flags and flags.totalw8 then
-        info_item.weight:SetText(round_100(flags.totalw8) .. " " .. game.translate_string("st_kg") .. " total")
+        info_item.weight:SetText(round_100(flags.totalw8) .. " " .. game.translate_string("st_kg") .. " " .. game.translate_string("st_tw8_total"))
     end
 end
 
