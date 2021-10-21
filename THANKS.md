@@ -14,6 +14,6 @@ https://www.moddb.com/mods/stalker-anomaly/addons/mouse-over-transfer-items
 _xcvb/bvcx_\
 https://www.moddb.com/members/bvcx/addons
 
-Russian translation for **TotalWeights**\
+Russian translations for **TotalWeights** and **StatsDisplay**\
 _JonySnowball_\
 https://github.com/JonySnowball
