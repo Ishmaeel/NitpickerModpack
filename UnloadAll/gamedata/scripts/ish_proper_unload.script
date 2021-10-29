@@ -1,14 +1,25 @@
 -- UnloadAll - Nitpicker's Modpack
--- Last modified: 2021.07.26
+-- Last modified: 2021.10.29
 -- https://github.com/Ishmaeel/NitpickerModpack
+--
 local Base_OnKeyboard = nil
 local E_RELEASE = ui_events.WINDOW_KEY_RELEASED
+
+local unload_strategies = {}
 
 function on_game_start()
     item_weapon.unload_all_weapons = no_stop_what_are_you_doing
 
     Base_OnKeyboard = ui_inventory.UIInventory.OnKeyboard
     ui_inventory.UIInventory.OnKeyboard = Ishy_OnKeyboard
+
+    table.insert(unload_strategies, validate)
+
+    if magazines and magazine_binder and magazines.eject_magazine and magazine_binder.is_supported_weapon then
+        table.insert(unload_strategies, eject_magazine)
+    end
+
+    table.insert(unload_strategies, unload_vanilla)
 end
 
 function Ishy_OnKeyboard(self, dik, keyboard_action)
@@ -36,10 +47,31 @@ function unload_all_the_things(self)
     end
 end
 
-function unload_weapon(temp, obj)
-    if IsWeapon(obj) and (not IsItem("fake_ammo_wpn", obj:section())) then
-        obj:force_unload_magazine(true)
+function unload_weapon(_, obj)
+    for _, strategy in pairs(unload_strategies) do
+        local handled = strategy(obj)
+        if handled then
+            return
+        end
     end
+end
+
+function validate(obj)
+    if not IsWeapon(obj) and (not IsItem("fake_ammo_wpn", obj:section())) then
+        return true
+    end
+end
+
+function eject_magazine(obj)
+    if magazine_binder.is_supported_weapon(obj) then
+        magazines.eject_magazine(obj)
+        return true
+    end
+end
+
+function unload_vanilla(obj)
+    obj:force_unload_magazine(true)
+    return true
 end
 
 function no_stop_what_are_you_doing()
