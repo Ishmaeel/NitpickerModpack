@@ -1,6 +1,7 @@
 -- CrashesToRiches - Nitpicker's Modpack
--- Last modified: 2021.07.26
+-- Last modified: 2021.11.08
 -- https://github.com/Ishmaeel/NitpickerModpack
+---@diagnostic disable: redundant-return
 
 function xr_effects.make_a_wish(actor, npc, p)
 
