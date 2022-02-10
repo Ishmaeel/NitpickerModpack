@@ -168,7 +168,7 @@
 							</typeDescriptor>
 						</plugin>
 						<plugin name="UnloadAll">
-							<description>Changes "unload all" key to only work when inventory is open. Also allows unloading all NPC weapons while looting.</description>
+							<description>Changes "unload all" key to only work when inventory is open. Also allows unloading all weapons while looting.</description>
 							<image path="fomod\images\banners-01-11.png" />
 							<files>
 								<folder source="UnloadAll\gamedata" destination="gamedata" priority="0" />
