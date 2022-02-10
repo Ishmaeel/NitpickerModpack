@@ -83,6 +83,6 @@ Displays total weight of multi-use or stacked items in inventory tooltips.
 ![TotalWeights](fomod/images/banners-01-10.png)
 
 ## UnloadAll
-Changes "unload all" key to only work when inventory is open. Also allows unloading all NPC weapons while looting.
+Changes "unload all" key to only work when inventory is open. Also allows unloading all weapons while looting.
 
 ![UnloadAll](fomod/images/banners-01-11.png)
