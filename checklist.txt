@@ -15,6 +15,7 @@ Module update checklist
 =======================
 * Update module
 * Update README?
+* Update description in ModuleConfig.xml?
 * Update THANKS?
 * Bump version in info.xml
 * Create tagged release
