@@ -1,5 +1,5 @@
 -- UnloadAll - Nitpicker's Modpack
--- Last modified: 2021.10.29
+-- Last modified: 2022.02.10
 -- https://github.com/Ishmaeel/NitpickerModpack
 --
 local Base_OnKeyboard = nil
@@ -41,8 +41,14 @@ function unload_all_the_things(self)
 
     if self.mode == "loot" then
         local npc = self.npc_id and get_object_by_id(self.npc_id)
-        if npc and npc.iterate_inventory then
-            npc:iterate_inventory(unload_weapon)
+        if npc then
+            if npc.iterate_inventory then
+                npc:iterate_inventory(unload_weapon)
+            end
+            if npc.iterate_inventory_box then
+                npc:iterate_inventory_box(unload_weapon)
+                self.update_info = true
+            end
         end
     end
 end
