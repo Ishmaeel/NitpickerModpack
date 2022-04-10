@@ -17,3 +17,7 @@ https://www.moddb.com/members/bvcx/addons
 Russian translations for **TotalWeights** and **StatsDisplay**\
 _JonySnowball_\
 https://github.com/JonySnowball
+
+Russian translation for **SkinningWithSpace**
+_VortexBomb_\
+https://www.moddb.com/members/vortexbomb
