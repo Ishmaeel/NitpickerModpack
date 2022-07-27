@@ -45,6 +45,8 @@ Double-clicking a pistol from the inventory equips the pistol in knife slot, if 
 ## LogFixDefaultControls
 The Ultimate Nitpick. Removes two unused settings from `default_controls.ltx` to prevent two warnings from being written into console log.
 
+*Note: No longer needed for 1.5.2 which has it built-in! Woohoo!*
+
 ![LogFixDefaultControls](fomod/images/banners-01-06.png)
 
 ## NahMusic

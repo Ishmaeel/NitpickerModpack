@@ -87,13 +87,13 @@
 							</typeDescriptor>
 						</plugin>
 						<plugin name="LogFixDefaultControls">
-							<description>Prevents two warnings from being written into console log.</description>
+							<description>Prevents two warnings from being written into console log. Not needed with 1.5.2.</description>
 							<image path="fomod\images\banners-01-06.png" />
 							<files>
 								<folder source="LogFixDefaultControls\gamedata" destination="gamedata" priority="0" />
 							</files>
 							<typeDescriptor>
-								<type name="Recommended"/>
+								<type name="Optional"/>
 							</typeDescriptor>
 						</plugin>
 						<plugin name="NahMusic">
