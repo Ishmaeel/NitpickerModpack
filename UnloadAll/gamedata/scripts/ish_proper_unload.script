@@ -54,7 +54,7 @@ function unload_all_the_things(self)
 end
 
 function unload_weapon(_, obj)
-    for _, strategy in pairs(unload_strategies) do
+    for _, strategy in ipairs(unload_strategies) do
         local handled = strategy(obj)
         if handled then
             return
@@ -63,7 +63,7 @@ function unload_weapon(_, obj)
 end
 
 function validate(obj)
-    if not IsWeapon(obj) and (not IsItem("fake_ammo_wpn", obj:section())) then
+    if (not IsWeapon(obj)) or  IsItem("fake_ammo_wpn", obj:section())) then
         return true
     end
 end
