@@ -19,6 +19,14 @@
 			"*.script": "lua"
 		},
 		"editor.unicodeHighlight.ambiguousCharacters": false,
-		"lpubsppop01.autoTimeStamp.momentFormat": "YYYY.MM.DD"
+		"lpubsppop01.autoTimeStamp.momentFormat": "YYYY.MM.DD",
+		"runOnSave.commands": [
+			{
+				"match": "UnloadAll",
+				"command": "xcopy ${workspaceFolder}\\UnloadAll\\gamedata C:\\Games\\MO2-Anomaly\\mods\\NPMPDEV_UnloadAll\\gamedata /DICEY",
+				"runIn": "backend",
+				"finishStatusMessage": "Gamedata content copied."
+			}
+		]
 	}
 }
