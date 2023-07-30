@@ -1,5 +1,5 @@
 -- UnloadAll - Nitpicker's Modpack
--- Last modified: 2022.02.10
+-- Last modified: 2023.07.30
 -- https://github.com/Ishmaeel/NitpickerModpack
 --
 local Base_OnKeyboard = nil
@@ -63,7 +63,7 @@ function unload_weapon(_, obj)
 end
 
 function validate(obj)
-    if (not IsWeapon(obj)) or  IsItem("fake_ammo_wpn", obj:section())) then
+    if not IsWeapon(obj) or IsItem("fake_ammo_wpn", obj:section()) then
         return true
     end
 end
